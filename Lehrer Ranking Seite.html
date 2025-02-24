@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lehrer Ranking</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #rankingForm {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        #rankingForm label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        #rankingForm input,
+        #rankingForm button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #rankingForm button {
+            background-color: #4CAF50; /* Grün */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        /* Bunteres Design */
+        #ranking-table th {
+            background-color: #4CAF50; /* Grün */
+            color: white;
+        }
+
+        #ranking-table tr:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        #ranking-table td {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Lehrer Ranking</h1>
+    <form id="ranking-form">
+    <table>
+        <thead>
+            <tr>
+                <th style="background-color: #4CAF50; color: white;">Kategorie</th>
+                    <th style="background-color: #4CAF50; color: white;">Wähle ein/e Lehrer/in</th>
+            </tr>
+        </thead>
+        <tbody id="lehrer-tabelle">
+           <tr>
+            <td>Nettester</td>
+            <td>
+                <select id="nettester">
+                    <option value="">Wähle</option>
+                    <option value="Frau Haun">Frau Haun</option>
+                    <option value="Frau Bellinger">Frau Bellinger</option>
+                    <option value="Herr Berger">Herr Berger</option>
+                    <option value="Frau Biasi">Frau Biasi</option>
+                    <option value="Frau Dallago">Frau Dallago</option>
+                    <option value="Frau Dincer-Alesevic">Frau Dincer-Alesevic</option>
+                    <option value="Frau Einwaller">Frau Einwaller</option>
+                    <option value="Herr Epp">Herr Epp</option>
+                    <option value="Frau Erharter">Frau Erharter</option>
+                    <option value="Herr Felder">Herr Felder</option>
+                    <option value="Frau Fuchs-Stotter">Frau Fuchs-Stotter</option>
+                    <option value="Frau Gasteiger">Frau Gasteiger</option>
+                    <option value="Frau Greiderer">Frau Greiderer</option>
+                    <option value="Frau Grube">Frau Grube</option>
+                    <option value="Frau Jack">Frau Jack</option>
+                    <option value="Frau Klampferer">Frau Klampferer</option>
+                    <option value="Herr Klingsbigl">Herr Klingsbigl</option>
+                    <option value="Frau Mauracher">Frau Mauracher</option>
+                    <option value="Frau Mayr">Frau Mayr</option>
+                    <option value="Frau Meraner">Frau Meraner</option>
+                    <option value="Frau Moser">Frau Moser</option>
+                    <option value="Herr Obererlacher">Herr Obererlacher</option>
+                    <option value="Frau Oberhollenzer">Frau Oberhollenzer</option>
+                    <option value="Frau Pfister">Frau Pfister</option>
+                    <option value="Herr Polletta">Herr Polletta</option>
+                    <option value="Herr Prada">Herr Prada</option>
+                    <option value="Frau Rueß">Frau Rueß</option>
+                    <option value="Herr Salcher">Herr Salcher</option>
+                    <option value="Herr Schellhorn">Herr Schellhorn</option>
+                    <option value="Frau Schier">Frau Schier</option>
+                    <option value="Frau Schranz">Frau Schranz</option>
+                    <option value="Herr Schwarzl">Herr Schwarzl</option>
+                    <option value="Herr Steibl-Egenbauer">Herr Steibl-Egenbauer</option>
+                    <option value="Herr Taxauer">Herr Taxauer</option>
+                    <option value="Herr Walch">Herr Walch</option>
+                    <option value="Frau Walder">Frau Walder</option>
+                    <option value="Herr Widauer">Herr Widauer</option>
+                    <option value="Herr Imeri">Herr Imeri</option>
+                    <option value="Frau Schäfer">Frau Schäfer</option>
+                    <option value="Frau Pujic">Frau Pujic</option>
+                    <option value="Frau Müller">Frau Müller</option>
+                </select>
+            </td>
+           </tr>
+           <tr>
+            <td>Bester</td>
+            <td>
+                <select id="bester">
+                    <option value="">Wähle</option>
+                    <option value="Frau Haun">Frau Haun</option>
+                    <option value="Frau Bellinger">Frau Bellinger</option>
+                    <option value="Herr Berger">Herr Berger</option>
+                    <option value="Frau Biasi">Frau Biasi</option>
+                    <option value="Frau Dallago">Frau Dallago</option>
+                    <option value="Frau Dincer-Alesevic">Frau Dincer-Alesevic</option>
+                    <option value="Frau Einwaller">Frau Einwaller</option>
+                    <option value="Herr Epp">Herr Epp</option>
+                    <option value="Frau Erharter">Frau Erharter</option>
+                    <option value="Herr Felder">Herr Felder</option>
+                    <option value="Frau Fuchs-Stotter">Frau Fuchs-Stotter</option>
+                    <option value="Frau Gasteiger">Frau Gasteiger</option>
+                    <option value="Frau Greiderer">Frau Greiderer</option>
+                    <option value="Frau Grube">Frau Grube</option>
+                    <option value="Frau Jack">Frau Jack</option>
+                    <option value="Frau Klampferer">Frau Klampferer</option>
+                    <option value="Herr Klingsbigl">Herr Klingsbigl</option>
+                    <option value="Frau Mauracher">Frau Mauracher</option>
+                    <option value="Frau Mayr">Frau Mayr</option>
+                    <option value="Frau Meraner">Frau Meraner</option>
+                    <option value="Frau Moser">Frau Moser</option>
+                    <option value="Herr Obererlacher">Herr Obererlacher</option>
+                    <option value="Frau Oberhollenzer">Frau Oberhollenzer</option>
+                    <option value="Frau Pfister">Frau Pfister</option>
+                    <option value="Herr Polletta">Herr Polletta</option>
+                    <option value="Herr Prada">Herr Prada</option>
+                    <option value="Frau Rueß">Frau Rueß</option>
+                    <option value="Herr Salcher">Herr Salcher</option>
+                    <option value="Herr Schellhorn">Herr Schellhorn</option>
+                    <option value="Frau Schier">Frau Schier</option>
+                    <option value="Frau Schranz">Frau Schranz</option>
+                    <option value="Herr Schwarzl">Herr Schwarzl</option>
+                    <option value="Herr Steibl-Egenbauer">Herr Steibl-Egenbauer</option>
+                    <option value="Herr Taxauer">Herr Taxauer</option>
+                    <option value="Herr Walch">Herr Walch</option>
+                    <option value="Frau Walder">Frau Walder</option>
+                    <option value="Herr Widauer">Herr Widauer</option>
+                    <option value="Herr Imeri">Herr Imeri</option>
+                    <option value="Frau Schäfer">Frau Schäfer</option>
+                    <option value="Frau Pujic">Frau Pujic</option>
+                    <option value="Frau Müller">Frau Müller</option>
+                </select>
+            </td>
+           </tr>
+           <tr>
+            <td>Intelligentester</td>
+            <td>
+                <select id="intelligentester">
+                    <option value="">Wähle</option>
+                    <option value="Frau Haun">Frau Haun</option>
+                    <option value="Frau Bellinger">Frau Bellinger</option>
+                    <option value="Herr Berger">Herr Berger</option>
+                    <option value="Frau Biasi">Frau Biasi</option>
+                    <option value="Frau Dallago">Frau Dallago</option>
+                    <option value="Frau Dincer-Alesevic">Frau Dincer-Alesevic</option>
+                    <option value="Frau Einwaller">Frau Einwaller</option>
+                    <option value="Herr Epp">Herr Epp</option>
+                    <option value="Frau Erharter">Frau Erharter</option>
+                    <option value="Herr Felder">Herr Felder</option>
+                    <option value="Frau Fuchs-Stotter">Frau Fuchs-Stotter</option>
+                    <option value="Frau Gasteiger">Frau Gasteiger</option>
+                    <option value="Frau Greiderer">Frau Greiderer</option>
+                    <option value="Frau Grube">Frau Grube</option>
+                    <option value="Frau Jack">Frau Jack</option>
+                    <option value="Frau Klampferer">Frau Klampferer</option>
+                    <option value="Herr Klingsbigl">Herr Klingsbigl</option>
+                    <option value="Frau Mauracher">Frau Mauracher</option>
+                    <option value="Frau Mayr">Frau Mayr</option>
+                    <option value="Frau Meraner">Frau Meraner</option>
+                    <option value="Frau Moser">Frau Moser</option>
+                    <option value="Herr Obererlacher">Herr Obererlacher</option>
+                    <option value="Frau Oberhollenzer">Frau Oberhollenzer</option>
+                    <option value="Frau Pfister">Frau Pfister</option>
+                    <option value="Herr Polletta">Herr Polletta</option>
+                    <option value="Herr Prada">Herr Prada</option>
+                    <option value="Frau Rueß">Frau Rueß</option>
+                    <option value="Herr Salcher">Herr Salcher</option>
+                    <option value="Herr Schellhorn">Herr Schellhorn</option>
+                    <option value="Frau Schier">Frau Schier</option>
+                    <option value="Frau Schranz">Frau Schranz</option>
+                    <option value="Herr Schwarzl">Herr Schwarzl</option>
+                    <option value="Herr Steibl-Egenbauer">Herr Steibl-Egenbauer</option>
+                    <option value="Herr Taxauer">Herr Taxauer</option>
+                    <option value="Herr Walch">Herr Walch</option>
+                    <option value="Frau Walder">Frau Walder</option>
+                    <option value="Herr Widauer">Herr Widauer</option>
+                    <option value="Herr Imeri">Herr Imeri</option>
+                    <option value="Frau Schäfer">Frau Schäfer</option>
+                    <option value="Frau Pujic">Frau Pujic</option>
+                    <option value="Frau Müller">Frau Müller</option>
+                </select>
+            </td>
+           </tr>
+           <tr>
+            <td>Sportlichster</td>
+            <td>
+                <select id="sportlichster">
+                    <option value="">Wähle</option>
+                    <option value="Frau Haun">Frau Haun</option>
+                    <option value="Frau Bellinger">Frau Bellinger</option>
+                    <option value="Herr Berger">Herr Berger</option>
+                    <option value="Frau Biasi">Frau Biasi</option>
+                    <option value="Frau Dallago">Frau Dallago</option>
+                    <option value="Frau Dincer-Alesevic">Frau Dincer-Alesevic</option>
+                    <option value="Frau Einwaller">Frau Einwaller</option>
+                    <option value="Herr Epp">Herr Epp</option>
+                    <option value="Frau Erharter">Frau Erharter</option>
+                    <option value="Herr Felder">Herr Felder</option>
+                    <option value="Frau Fuchs-Stotter">Frau Fuchs-Stotter</option>
+                    <option value="Frau Gasteiger">Frau Gasteiger</option>
+                    <option value="Frau Greiderer">Frau Greiderer</option>
+                    <option value="Frau Grube">Frau Grube</option>
+                    <option value="Frau Jack">Frau Jack</option>
+                    <option value="Frau Klampferer">Frau Klampferer</option>
+                    <option value="Herr Klingsbigl">Herr Klingsbigl</option>
+                    <option value="Frau Mauracher">Frau Mauracher</option>
+                    <option value="Frau Mayr">Frau Mayr</option>
+                    <option value="Frau Meraner">Frau Meraner</option>
+                    <option value="Frau Moser">Frau Moser</option>
+                    <option value="Herr Obererlacher">Herr Obererlacher</option>
+                    <option value="Frau Oberhollenzer">Frau Oberhollenzer</option>
+                    <option value="Frau Pfister">Frau Pfister</option>
+                    <option value="Herr Polletta">Herr Polletta</option>
+                    <option value="Herr Prada">Herr Prada</option>
+                    <option value="Frau Rueß">Frau Rueß</option>
+                    <option value="Herr Salcher">Herr Salcher</option>
+                    <option value="Herr Schellhorn">Herr Schellhorn</option>
+                    <option value="Frau Schier">Frau Schier</option>
+                    <option value="Frau Schranz">Frau Schranz</option>
+                    <option value="Herr Schwarzl">Herr Schwarzl</option>
+                    <option value="Herr Steibl-Egenbauer">Herr Steibl-Egenbauer</option>
+                    <option value="Herr Taxauer">Herr Taxauer</option>
+                    <option value="Herr Walch">Herr Walch</option>
+                    <option value="Frau Walder">Frau Walder</option>
+                    <option value="Herr Widauer">Herr Widauer</option>
+                    <option value="Herr Imeri">Herr Imeri</option>
+                    <option value="Frau Schäfer">Frau Schäfer</option>
+                    <option value="Frau Pujic">Frau Pujic</option>
+                    <option value="Frau Müller">Frau Müller</option>
+                </select>  
+            </td>
+           </tr>
+           <tr>
+            <td>Respektvollster</td>
+            <td>
+                <select id="respektvollster">
+                    <option value="">Wähle</option>
+                    <option value="Frau Haun">Frau Haun</option>
+                    <option value="Frau Bellinger">Frau Bellinger</option>
+                    <option value="Herr Berger">Herr Berger</option>
+                    <option value="Frau Biasi">Frau Biasi</option>
+                    <option value="Frau Dallago">Frau Dallago</option>
+                    <option value="Frau Dincer-Alesevic">Frau Dincer-Alesevic</option>
+                    <option value="Frau Einwaller">Frau Einwaller</option>
+                    <option value="Herr Epp">Herr Epp</option>
+                    <option value="Frau Erharter">Frau Erharter</option>
+                    <option value="Herr Felder">Herr Felder</option>
+                    <option value="Frau Fuchs-Stotter">Frau Fuchs-Stotter</option>
+                    <option value="Frau Gasteiger">Frau Gasteiger</option>
+                    <option value="Frau Greiderer">Frau Greiderer</option>
+                    <option value="Frau Grube">Frau Grube</option>
+                    <option value="Frau Jack">Frau Jack</option>
+                    <option value="Frau Klampferer">Frau Klampferer</option>
+                    <option value="Herr Klingsbigl">Herr Klingsbigl</option>
+                    <option value="Frau Mauracher">Frau Mauracher</option>
+                    <option value="Frau Mayr">Frau Mayr</option>
+                    <option value="Frau Meraner">Frau Meraner</option>
+                    <option value="Frau Moser">Frau Moser</option>
+                    <option value="Herr Obererlacher">Herr Obererlacher</option>
+                    <option value="Frau Oberhollenzer">Frau Oberhollenzer</option>
+                    <option value="Frau Pfister">Frau Pfister</option>
+                    <option value="Herr Polletta">Herr Polletta</option>
+                    <option value="Herr Prada">Herr Prada</option>
+                    <option value="Frau Rueß">Frau Rueß</option>
+                    <option value="Herr Salcher">Herr Salcher</option>
+                    <option value="Herr Schellhorn">Herr Schellhorn</option>
+                    <option value="Frau Schier">Frau Schier</option>
+                    <option value="Frau Schranz">Frau Schranz</option>
+                    <option value="Herr Schwarzl">Herr Schwarzl</option>
+                    <option value="Herr Steibl-Egenbauer">Herr Steibl-Egenbauer</option>
+                    <option value="Herr Taxauer">Herr Taxauer</option>
+                    <option value="Herr Walch">Herr Walch</option>
+                    <option value="Frau Walder">Frau Walder</option>
+                    <option value="Herr Widauer">Herr Widauer</option>
+                    <option value="Herr Imeri">Herr Imeri</option>
+                    <option value="Frau Schäfer">Frau Schäfer</option>
+                    <option value="Frau Pujic">Frau Pujic</option>
+                    <option value="Frau Müller">Frau Müller</option>
+                </select>
+            </td>
+           </tr>
+           <tr>
+            <td>Humorvollster</td>
+            <td>
+                <select id="humorvollster">
+                    <option value="">Wähle</option>
+                    <option value="Frau Haun">Frau Haun</option>
+                    <option value="Frau Bellinger">Frau Bellinger</option>
+                    <option value="Herr Berger">Herr Berger</option>
+                    <option value="Frau Biasi">Frau Biasi</option>
+                    <option value="Frau Dallago">Frau Dallago</option>
+                    <option value="Frau Dincer-Alesevic">Frau Dincer-Alesevic</option>
+                    <option value="Frau Einwaller">Frau Einwaller</option>
+                    <option value="Herr Epp">Herr Epp</option>
+                    <option value="Frau Erharter">Frau Erharter</option>
+                    <option value="Herr Felder">Herr Felder</option>
+                    <option value="Frau Fuchs-Stotter">Frau Fuchs-Stotter</option>
+                    <option value="Frau Gasteiger">Frau Gasteiger</option>
+                    <option value="Frau Greiderer">Frau Greiderer</option>
+                    <option value="Frau Grube">Frau Grube</option>
+                    <option value="Frau Jack">Frau Jack</option>
+                    <option value="Frau Klampferer">Frau Klampferer</option>
+                    <option value="Herr Klingsbigl">Herr Klingsbigl</option>
+                    <option value="Frau Mauracher">Frau Mauracher</option>
+                    <option value="Frau Mayr">Frau Mayr</option>
+                    <option value="Frau Meraner">Frau Meraner</option>
+                    <option value="Frau Moser">Frau Moser</option>
+                    <option value="Herr Obererlacher">Herr Obererlacher</option>
+                    <option value="Frau Oberhollenzer">Frau Oberhollenzer</option>
+                    <option value="Frau Pfister">Frau Pfister</option>
+                    <option value="Herr Polletta">Herr Polletta</option>
+                    <option value="Herr Prada">Herr Prada</option>
+                    <option value="Frau Rueß">Frau Rueß</option>
+                    <option value="Herr Salcher">Herr Salcher</option>
+                    <option value="Herr Schellhorn">Herr Schellhorn</option>
+                    <option value="Frau Schier">Frau Schier</option>
+                    <option value="Frau Schranz">Frau Schranz</option>
+                    <option value="Herr Schwarzl">Herr Schwarzl</option>
+                    <option value="Herr Steibl-Egenbauer">Herr Steibl-Egenbauer</option>
+                    <option value="Herr Taxauer">Herr Taxauer</option>
+                    <option value="Herr Walch">Herr Walch</option>
+                    <option value="Frau Walder">Frau Walder</option>
+                    <option value="Herr Widauer">Herr Widauer</option>
+                    <option value="Herr Imeri">Herr Imeri</option>
+                    <option value="Frau Schäfer">Frau Schäfer</option>
+                    <option value="Frau Pujic">Frau Pujic</option>
+                    <option value="Frau Müller">Frau Müller</option>
+                </select> 
+            </td>
+           </tr>
+        </tbody>
+    </table>
+    <button id="loeschen-button" style="display: none;" onclick="loescheAlleRankings()">Alle Rankings löschen</button>
+    <button onclick="checkAdmin()">Als Admin anmelden</button>
+    <button type="submit">Ranking hinzufügen</button>
+    <h1>Lehrer Ranking</h1>
+    <form id="ranking-form">
+        <table>
+            <thead>
+                <tr>
+                    <th style="background-color: #4CAF50; color: white;">Nettester</th>
+                    <th style="background-color: #4CAF50; color: white;">Bester</th>
+                    <th style="background-color: #4CAF50; color: white;">Intelligentester</th>
+                    <th style="background-color: #4CAF50; color: white;">Sportlichster</th>
+                    <th style="background-color: #4CAF50; color: white;">Respektvollster</th>
+                    <th style="background-color: #4CAF50; color: white;">Humorvollster</th>
+                </tr>
+            </thead>
+            <tbody id="ranking-display">
+                <!-- Rankings werden hier eingefügt -->
+            </tbody>
+        </table>
+        
+   
+    
+    
+    
+
+    <script>
+        const kategorien = ["Nettester", "Bester", "Intelligentester", "Sportlichster", "Respektvollster", "Humorvollster"];
+
+        document.getElementById("ranking-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const rankingTabelle = document.getElementById("ranking-display");
+            
+            kategorien.forEach(async kategorie => {
+                const selectElement = document.getElementById(kategorie.toLowerCase());
+                const ausgewaehlterLehrer = selectElement ? selectElement.value : "";
+
+                if (ausgewaehlterLehrer) {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `<td>${kategorie}</td><td>${ausgewaehlterLehrer}</td>`;
+                    rankingTabelle.appendChild(row);
+
+                    await fetch("http://localhost:3000/rankings", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ kategorie, lehrer: ausgewaehlterLehrer })
+                    });
+                }
+            });
+        });
+
+        async function ladeRanking() {
+            const rankingTabelle = document.getElementById("ranking-display");
+            rankingTabelle.innerHTML = "";
+
+            const response = await fetch("http://localhost:3000/rankings");
+            const gespeicherteRankings = await response.json();
+
+            gespeicherteRankings.forEach(ranking => {
+                const row = document.createElement("tr");
+                row.innerHTML = `<td>${ranking.kategorie}</td><td>${ranking.lehrer}</td>`;
+                rankingTabelle.appendChild(row);
+            });
+        }
+
+        async function loescheAlleRankings() {
+    if (confirm("Bist du sicher, dass du alle Rankings löschen möchtest?")) {
+        try {
+            await fetch("http://localhost:3000/rankings", { method: "DELETE" });
+            document.getElementById("ranking-display").innerHTML = "";
+        } catch (error) {
+            console.error("Fehler:", error);
+        }
+    }
+}
+
+
+        function checkAdmin() {
+            const adminPasswort = "geheim123";
+            const eingegebenesPasswort = prompt("Bitte Admin-Passwort eingeben:");
+            if (eingegebenesPasswort === adminPasswort) {
+                document.getElementById("loeschen-button").style.display = "block";
+            } else {
+                alert("Falsches Passwort! Kein Zugriff.");
+            }
+        }
+
+        ladeRanking();
+    </script>
+</body>
+</html>
